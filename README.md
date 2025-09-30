@@ -299,7 +299,6 @@ A real-world example of IoT in action is its use in combating **rhino poaching i
 
 <img width="469" height="420" alt="image" src="https://github.com/user-attachments/assets/7e2300c4-6083-4678-ac62-d9ede88c43c3" />  
 
----
 
 ### **Infrastructure as a Service (IaaS)**  
 - **Definition**: Provides virtualized compute, networking, and storage resources on demand.  
