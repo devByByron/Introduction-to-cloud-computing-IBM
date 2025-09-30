@@ -300,12 +300,23 @@ A real-world example of IoT in action is its use in combating **rhino poaching i
 <img width="469" height="420" alt="image" src="https://github.com/user-attachments/assets/7e2300c4-6083-4678-ac62-d9ede88c43c3" />  
 
 
+
+
+  ### **Software as a Service (SaaS)**  
+- **Definition**: Ready-to-use software delivered over the internet.  
+- **Users**: Anyone (e.g., using YouTube, Gmail).  
+- **Pricing**: Usually subscription-based.  
+- **Provider Manages**: Infrastructure, platform, applications, and data.  
+- **Metaphor**: *Taking a taxi/Uber* → you don’t drive or handle maintenance.  
+
+---
+
 ### **Infrastructure as a Service (IaaS)**  
 - **Definition**: Provides virtualized compute, networking, and storage resources on demand.  
 - **Users (Personas)**: System Admins / IT Admins.  
 - **User Role**: Configure and manage resources.  
 - **Provider Manages**: Physical infrastructure (data centers, cooling, power, network, security).  
-- **Metaphor**: *Leasing a car* → you choose, drive, and maintain it.  
+- **Metaphor**: *Leasing a car* → you choose, drive, and maintain it.
 
 ---
 
@@ -314,15 +325,6 @@ A real-world example of IoT in action is its use in combating **rhino poaching i
 - **Users (Personas)**: Developers (IBM persona: *Jane*).  
 - **Includes**: OS, dev tools, databases, business analytics.  
 - **Metaphor**: *Renting a car* → you drive, but don’t worry about specs.  
-
----
-
-### **Software as a Service (SaaS)**  
-- **Definition**: Ready-to-use software delivered over the internet.  
-- **Users**: Anyone (e.g., using YouTube, Gmail).  
-- **Pricing**: Usually subscription-based.  
-- **Provider Manages**: Infrastructure, platform, applications, and data.  
-- **Metaphor**: *Taking a taxi/Uber* → you don’t drive or handle maintenance.  
 
 ---
 
