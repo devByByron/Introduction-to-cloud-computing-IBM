@@ -854,14 +854,273 @@ Unlike virtual machines, containers are **small, fast, and portable** because th
 
 ---
 
+# Cloud Storage
+
+Cloud storage is where you save data files in the cloud. Some storage must be **attached to a compute node** before it can be accessed, while other types can be accessed **directly** over the public internet or via private network connections.  
+
+Cloud providers **host, secure, manage, and maintain** cloud storage and its infrastructure to ensure data availability when you need it.  
+
+You typically pay **per gigabyte provisioned**, and costs depend on speed:  
+- Faster read/write speeds = Higher cost  
+- Slower speeds = Lower cost  
+
+---
+
+## Main Types of Cloud Storage
+
+### 1. Direct Attached Storage (Local Storage)
+- **Definition**: Storage directly presented to a cloud-based server (within the same chassis or rack).  
+- **Use Case**: Commonly used to store a server’s operating system.  
+- **Pros**:
+  - Very fast access  
+- **Cons**:
+  - **Ephemeral** – storage disappears once the compute node is terminated  
+  - Not shareable across nodes  
+  - Less resilient (RAID helps, but weaker than other storage types)  
+
+---
+
+# File Storage
+
+File Storage is a cloud storage service that, like **Direct Attached Storage**, must be attached to a compute node before it can be accessed. However, it offers **lower cost**, **higher resilience**, and requires **less disk management** compared to direct attached storage.
+
+---
+
+## Key Characteristics
+- **Attached as a disk** to compute nodes.  
+- **Provision larger volumes** than direct attached storage.  
+- **Remote storage appliances** host the physical disks, managed entirely by the service provider.  
+  - Includes **encryption in transit** for data security.  
+  - Appliances are **highly resilient** to hardware failure.  
+- **Mounted via Ethernet** (dedicated to storage traffic).  
+  - Often called **Network Attached Storage (NAS)**, **Network File Storage**, or **NFS**.  
+- **Variable performance**:  
+  - Ethernet networks can experience **bandwidth fluctuations** under load.  
+  - Cloud providers design for high throughput, but **consistent speed is not guaranteed**.  
+
+---
+
+## Mounting & Sharing
+- Can be **mounted on multiple compute nodes simultaneously**.  
+- Appears as a normal disk/volume to the node.  
+- Ideal when multiple nodes or users need **shared access to the same storage**.  
+
+---
+
+## Common Use Cases
+- **Departmental file shares**  
+- **Landing zones** for incoming files to be processed by applications  
+- **File repositories** for web services  
+- **Databases** (if cost is more important than performance)  
+
+---
+
+## Performance Considerations: IOPS
+- **IOPS (Input/Output Operations Per Second)** measures how fast the disks themselves read/write data.  
+- **Not the same as network speed**.  
+- **Higher IOPS = faster performance**, but also **higher cost**.  
+- Provisioning too low → bottlenecks and slow applications.  
+- Provisioning too high → wasted cost.  
+
+### Example
+- File share mounted on **30 compute nodes**.  
+- Application makes **60 read/write operations per minute**.  
+- Average = **1 operation per second**.  
+- This illustrates how **different applications require different IOPS** levels.  
+
+---
+
+## Summary
+- **File Storage** is best for **shared access** and workloads that don’t need ultra-consistent speeds.  
+- **Block Storage** (covered next) is better when **low latency and high, consistent performance** are required.  
+
+
+---
+
+# Block Storage
+
+Block storage is a cloud storage option that breaks files into **blocks (chunks of data)**, with each block stored under a **unique address**. Like **Direct Attached Storage** and **File Storage**, block storage must be **attached to a compute node** before it can be used.
+
+---
+
+## Key Characteristics
+- **Mounted as volumes** to compute nodes.  
+- Uses **dedicated high-speed fiber optic networks** (faster and more reliable than Ethernet).  
+- **Highly resilient** – cloud providers secure data with encryption **at rest** and **in transit**.  
+- Normally **mounted to only one compute node at a time** (unlike File Storage, which can be shared across many).  
+- Typically **higher cost** than File Storage (due to fiber networks).  
+- Supports specifying **IOPS (Input/Output Operations Per Second)** at provisioning time.  
+  - Some providers let you adjust IOPS later to match changing workloads.  
+
+---
+
+## When to Use Block Storage
+Block storage is best suited for workloads that demand **low latency** and **consistent high performance**, such as:
+- Databases (transactional & relational)  
+- Mail servers  
+- Boot volumes for VMware or other virtualization platforms  
+- Applications requiring **high IOPS** and redundancy  
+
+---
+
+## Block vs File Storage
+
+| Feature                  | File Storage (NFS)                          | Block Storage                           |
+|---------------------------|---------------------------------------------|-----------------------------------------|
+| **Connection**           | Ethernet (network attached storage)         | High-speed fiber (storage area network) |
+| **Latency & Speed**      | Variable, can be slower under heavy load    | Consistent low-latency, high throughput |
+| **Node Attachment**      | Can be mounted to **many nodes** (80+)      | Mounted to **one node only**            |
+| **Use Cases**            | Shared file systems, collaborative work, mixed structured/unstructured data | Databases, mail servers, VMware boot volumes |
+| **Cost**                 | Lower                                       | Higher                                  |
+
+---
+
+## Summary
+- **File Storage** → Best for collaboration, shared file systems, or workloads where cost matters more than performance.  
+- **Block Storage** → Best for performance-critical workloads where **speed, low latency, and consistency** are required.  
+ 
+
+🔑 **Key Term**:  
+- **IOPS (Input/Output Operations Per Second)** – measures how fast data can be read/written.  
+- **Persistence** – determines whether storage remains after a compute node is terminated.  
+
+  - **Persistent**: Data survives even if the compute node is deleted (but storage costs continue).  
+  - **Ephemeral**: Storage is deleted with the compute node (no costs, but data is lost).  
+
+💾 **Backups**:  
+- Snapshots can be taken to preserve storage state:  
+  - Fast to create (store metadata only)  
+  - Record only incremental changes after the first snapshot  
+  - Restore entire volumes (not individual files)  
+
+---
+
+# Object Storage
+
+**Object Storage** is a cloud storage option designed for storing large amounts of **unstructured data**. Unlike **File** or **Block Storage**, it is not attached to a compute node. Instead, you interact with it through an **API** for uploading, downloading, and managing data.
+
+---
+
+## Key Characteristics
+- **Not attached to compute nodes** → accessed directly via an API.  
+- **Extremely cost-effective** → usually just a few US cents per GB per month (or less, depending on tier).  
+- **Virtually infinite scalability** → storage expands as you add data; no predefined size needed.  
+- **Flat structure** → no hierarchical folders. Data is stored in **buckets**, with each file as an **object**.  
+- **Metadata-rich** → each object includes information like object ID, timestamps, and attributes for easy access and management.  
+- **Fully managed** by the cloud provider → includes built-in **resilience**, **replication**, and **high availability** options.  
+
+---
+
+## Buckets & Objects
+- **Buckets** are top-level containers (like folders).  
+  - You can create multiple buckets.  
+  - **Buckets cannot be nested** (no buckets inside buckets).  
+- **Objects** are the actual data items (files, images, videos, etc.) stored in buckets.  
+- Metadata is automatically added to objects, enabling applications to quickly locate and manage them.  
+
+---
+
+## Resilience & Availability Options
+- **Single-zone buckets** → data stored in one data center.  
+  - Lower cost, good for compliance or location-specific needs.  
+- **Regional buckets** → data stored in multiple zones within a region.  
+- **Multi-region buckets** → data stored redundantly across multiple regions.  
+  - Higher cost, but maximizes **availability** and **durability**.  
+
+---
+
+## Common Use Cases
+Object storage is ideal for **static data** where high-speed read/write is not critical:  
+- **Documents, images, audio, and video files**  
+- **IoT-generated data**  
+- **Application binaries**  
+- **Virtual machine images**  
+- **Backup and archival data**  
+- **Logs and analytics data**  
+
+⚠️ **Not suitable for:**  
+- Running operating systems  
+- Databases  
+- Any application with frequently changing file contents  
+
+---
+
+## Summary
+- Accessed via API, not attached to compute nodes.  
+- Low cost and scalable “pay for what you use” model.  
+- Stores **objects inside buckets** with **flat structure**.  
+- Great for static, unstructured data of any size.  
+- Different tiers available for **resilience**, **availability**, and **access frequency**.  
+
+
+---
+
 ## Summary
 
-Containers are a **modern alternative to VMs** for deploying applications:
-- VM-based approach = resource-heavy, slower to scale, less portable.  
-- Container-based approach = lightweight, portable, scalable, efficient.  
+| Storage Type      | Speed   | Cost    | Persistence | Typical Use Cases |
+|-------------------|---------|---------|-------------|------------------|
+| Direct Attached   | Fast    | High    | Ephemeral   | OS storage       |
+| File Storage (NFS)| Medium  | Lower   | Optional    | Shared files, simple data organization |
+| Block Storage     | Fastest | Higher  | Optional    | Databases, apps requiring high IOPS |
+| Object Storage    | Slow    | Lowest  | Persistent  | Backups, unstructured data, large files |
 
-They enable **Cloud Native architectures**, make CI/CD pipelines smoother, and are well-suited for today’s microservices-driven development environments.
 
+---
+
+# Object Storage, Data Tiers, and APIs
+
+## Storage Tiers
+- **Standard Tier**:  
+  - For frequently accessed objects.  
+  - Highest per gigabyte cost.  
+
+- **Vault/Archive Tier**:  
+  - For infrequently accessed documents (once or twice a month).  
+  - Lower storage cost.  
+
+- **Cold Vault Tier**:  
+  - For rarely accessed data (once or twice a year).  
+  - Extremely low cost (fractions of a cent per GB/month).  
+  - Retrieval can take hours since data may be stored offline.  
+
+- **Automatic Archiving**:  
+  - Objects can be moved to cheaper tiers based on access patterns.  
+  - Uses object metadata to determine archiving rules.  
+
+## Performance
+- Object Storage does **not** have IOPS options.  
+- Slower compared to **file or block storage**.  
+- Data retrieval can take seconds to hours depending on the tier.  
+- Not ideal for applications requiring fast access.  
+
+## Pricing
+- Charged **per GB of storage per month**.  
+- Additional retrieval costs, especially for vault and cold tiers.  
+- Still cheaper overall than file or block storage.  
+
+## APIs
+- Accessed through an **Application Programming Interface (API)**.  
+- Most common: **S3 API** (from AWS), widely adopted across providers.  
+- S3-compatible APIs allow cross-vendor compatibility.  
+- RESTful (HTTP-based) API enables:  
+  - Managing buckets.  
+  - Uploading (PUT) and downloading (GET) objects.  
+
+## Use Cases
+- **Existing and new applications**.  
+- **Backup & Disaster Recovery (BDR)**:  
+  - Cloud object storage replaces off-site tape solutions.  
+  - Faster restores and improved efficiency.  
+- Supported by many modern backup packages.  
+
+## Key Takeaways
+- Different tiers balance cost vs. access frequency.  
+- Storage is cheap, but retrieval may incur costs/delays.  
+- Slower than file or block storage.  
+- APIs (often S3-compatible) make it widely usable.  
+- Effective for backups and disaster recovery.  
+
+---
 
 
 
