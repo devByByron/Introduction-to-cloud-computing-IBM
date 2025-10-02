@@ -1257,5 +1257,138 @@ Applications well-suited for serverless often share these characteristics:
 Serverless computing allows developers to build applications faster by focusing on code, not infrastructure. It provides **automatic scaling, pay-per-use pricing, and simplified management**, making it ideal for event-driven, short-lived workloads. However, considerations around **latency, long-running tasks, and vendor lock-in** must be evaluated before adoption.  
 
 
+---
+
+## DevOps Overview
+
+## What is DevOps?
+
+**DevOps** is a collaborative approach that combines **development** and **operations** with monitoring, analysis, and optimization.  
+It ensures that software is **designed, developed, delivered, and run reliably and efficiently**.  
+
+- Development teams focus on building and delivering features.  
+- Operations teams monitor, predict failures, manage environments, and fix issues.  
+- DevOps unifies these roles along with business owners and QA teams.  
+
+By extending **agile** and **lean principles** across the entire software supply chain—including customers, partners, and suppliers—DevOps improves productivity, reduces overhead, and accelerates feedback cycles.
+
+
+<img width="329" height="306" alt="image" src="https://github.com/user-attachments/assets/1381e396-ce4f-44dd-96a6-8f4139daefb5" />
+
+
+---
+
+## Benefits of DevOps
+
+- **Faster iterations** – Deliver software in short, continuous cycles.  
+- **Accelerated customer feedback** – Quickly adapt to market opportunities.  
+- **Higher quality** – Small, well-designed, incremental updates.  
+- **Collaboration at scale** – Unified metrics and reduced duplication of work.  
+- **Resilience** – Faster recovery from failures and disasters.  
+
+---
+
+## Key DevOps Practices
+
+### 1. Continuous Delivery (CD)  
+Deliver small, high-quality increments of software to customers frequently.
+
+### 2. Continuous Integration (CI)  
+Create packaged builds of code changes as **immutable images**.  
+> *Immutable means components are not modified but replaced with upgraded versions.*
+
+### 3. Continuous Deployment  
+Progress each packaged build rapidly through the deployment lifecycle.
+
+### 4. Continuous Monitoring  
+Use monitoring tools to assess performance and availability before and after deployment.
+
+### 5. Delivery Pipeline  
+An automated sequence of stages:  
+**Ideation → Coding → Building → Deploying → Managing → Continuous Improvement (loops back to ideation)**
+
+---
+
+## DevOps in the Cloud
+
+DevOps is especially powerful for **cloud-ready** and **cloud-native applications**:
+
+- **Automated provisioning** – Programmatically provision servers, middleware, and code.  
+- **Repeatable deployments** – Documented, verifiable, and traceable installations.  
+- **Fully automated pipelines** – From code to deployment in a continuous flow.  
+- **Production-like test environments** – Low-cost, scalable, cloud-based testing.  
+- **Resilience & disaster recovery** – Quickly rebuild compromised systems.  
+
+---
+
+## Why DevOps Matters for Cloud Native Apps
+
+Cloud native applications are **complex distributed systems** with:  
+- Multiple moving parts  
+- Independent tech stacks  
+- Rapid release cycles  
+
+**DevOps principles** define how teams build, deploy, and manage these apps efficiently.  
+By leveraging automated provisioning, CI/CD, and monitoring, DevOps enables:  
+- Faster delivery  
+- Higher productivity  
+- Improved quality  
+- Reliable scaling and recovery  
+
+---
+
+# Application Modernization
+
+## Introduction
+Many organizations have huge investments in existing applications that are often siloed in **legacy systems**, making them difficult and expensive to update or maintain.  
+**Modernizing applications** can unlock major benefits, including:  
+- Accelerating digital transformation  
+- Leveraging new technologies and services  
+- Responding more effectively to customer needs and changing markets  
+
+**Cloud computing** is one of the three main ingredients of Application Modernization, alongside **architecture transformation** and **new ways of working**.
+
+---
+
+## The Three Transformations of Application Modernization
+
+### 1. Architecture
+- **Past:**  
+  - Monolithic applications  
+  - Service-Oriented Architecture (SOA) with heavyweight XML communication  
+- **Present:**  
+  - Distributed web services with shared databases and front ends  
+- **Future (Modernization):**  
+  - **Microservices**: small, independent, REST-based services  
+  - Greater independence in development and deployment  
+
+### 2. Infrastructure
+- **Past:** Physical servers  
+- **Intermediate:** Virtual machines (higher density, easier provisioning)  
+- **Future (Modernization):**  
+  - **Cloud infrastructure** (public, private, or hybrid)  
+  - Containers enabling dynamic scaling and rapid deployment  
+
+### 3. Ways of Working
+- **Past:** Waterfall development (long planning, testing, and delivery cycles)  
+- **Intermediate:** Agile development practices  
+- **Future (Modernization):**  
+  - **DevOps and Site Reliability Engineering (SRE)**  
+  - Programmable infrastructure with speed + resiliency  
+  - Continuous delivery and rapid adaptability to business needs  
+
+---
+
+## How the Transformations Work Together
+While many organizations see these as separate initiatives—**Cloud transformation**, **DevOps transformation**, **Microservices adoption**—they are tightly interrelated:  
+
+- **Microservices need Cloud** to dynamically deploy and scale.  
+- **Cloud works best with Microservices**, not monolithic apps.  
+- **DevOps unifies development and operations**, enabling speed and resiliency.  
+
+> Without pursuing all three together, organizations miss out on the full benefits of modernization.  
+
+---
+
 
 
