@@ -1122,6 +1122,139 @@ Object storage is ideal for **static data** where high-speed read/write is not c
 
 ---
 
+# Microservices Architecture Overview  
+
+## What Are Microservices?  
+Microservices architecture is an approach where a single application is built as a collection of **small, loosely coupled, independently deployable services**.  
+
+- Each service runs in its **own container** with its own technology stack.  
+- Services communicate via **APIs, event streaming, or message brokers**.  
+- Teams can **develop, update, and deploy services independently**, improving agility and scalability.  
+
+---
+
+## Benefits of Microservices  
+- **Independent Development** – Multiple teams can work in parallel using different stacks and runtimes.  
+- **Scalability** – Only the services facing high demand need to be scaled, reducing infrastructure waste and cost.  
+- **Faster Updates** – Small changes and new features can be deployed quickly without impacting the entire application.  
+- **Resilience** – If one service fails, it doesn’t bring down the entire system.  
+
+---
+
+## From Monoliths to Microservices  
+- **Traditional Monolithic Applications**: Built as a single large codebase, harder to maintain, update, and scale.  
+- **Modern Microservices Applications**: Use existing code and cloud development platforms, breaking down functionality into modular services.  
+
+**Examples of Microservices in an application:**  
+- Search  
+- Recommendations  
+- Customer Ratings  
+- Product Catalogs  
+
+Each is developed separately but works together through containers and APIs.  
+
+---
+
+## Containers and Service Discovery  
+- **Containers** deliver and run microservices in a **plug-and-play** fashion.  
+  - Easy to replace a faulty service without affecting others.  
+- **Service Discovery** enables microservices to locate and communicate with each other.  
+- **APIs** act as the bridge between services.  
+
+---
+
+## Example Use Case: Dream Game Streaming Service  
+
+**Dream Game**, an online sports streaming platform, demonstrates microservices in action:  
+
+1. **Content Catalog Microservice** – Organizes games with metadata.  
+2. **Search Microservice** – Matches user queries with the catalog.  
+3. **Recommendations Microservice** – Suggests popular or personalized content.  
+
+- These services run in **separate containers** and communicate via **APIs**.  
+- **Service Discovery** ensures they find and connect with one another.  
+
+---
+
+## User Story: Ron  
+- Ron logs in and sees **trending content**.  
+- He searches for his soccer team, powered by the **Search + Catalog microservices**.  
+- Developers update the **Recommendations microservice** with analytics, enabling personalized suggestions.  
+- **Result:** Ron now sees his favorite team’s latest game on the homepage in **one click**.  
+
+
+# Serverless Computing Overview  
+
+## 🌐 What is Serverless Computing?  
+Serverless computing is a cloud execution model that **offloads infrastructure management** tasks (scaling, scheduling, patching, provisioning) to the cloud provider.  
+
+- **"Serverless" doesn’t mean no servers exist** — it means developers don’t manage them.  
+- Resources are allocated **on demand**, based on incoming requests.  
+- Developers focus on **code and business logic**, while infrastructure is handled by the provider.  
+
+---
+
+## ⚡ Key Attributes of Serverless  
+- **No server provisioning** – Developers don’t install or operate servers or application stacks.  
+- **Runs on demand** – Code executes only per request, scaling automatically with demand.  
+- **Pay-per-use model** – Costs apply only for execution time and resources consumed (no charges for idle time).  
+- **Stateless execution** – Each function runs in an isolated, stateless container.  
+- **Automatic scaling** – New function instances are created as needed for incoming requests.  
+
+---
+
+## 🖥️ Example Scenario  
+A serverless application between the **front-end of a website** and **cloud storage**:  
+
+1. User uploads a text file via the website.  
+2. The serverless app processes the file and creates translations in multiple languages.  
+3. Translated files are stored in **cloud storage**.  
+4. The app sends back download links to the user.  
+
+---
+
+## 🚀 Popular Serverless Services  
+- **IBM Cloud Functions** (based on Apache OpenWhisk)  
+- **AWS Lambda**  
+- **Microsoft Azure Functions**  
+
+---
+
+## ✅ When to Use Serverless  
+Applications well-suited for serverless often share these characteristics:  
+- **Short-running, stateless functions** (seconds to minutes).  
+- **Seasonal or fluctuating workloads** with peaks and idle time.  
+- **Event-driven or asynchronous processes** (e.g., triggered by uploads or API calls).  
+- **Microservices designed as independent, stateless functions**.  
+
+### Common Use Cases  
+- **Data & Event Processing**  
+- **IoT applications**  
+- **Mobile backends**  
+- **Microservices architectures**  
+- **Data transformation tasks**  
+  - Text, image, audio, video processing  
+  - Data enrichment, validation, cleansing  
+  - PDF processing, audio normalization, thumbnail generation, video transcoding  
+- **Parallel workloads**  
+  - Data search and processing  
+  - Genome processing  
+- **Data streaming ingestion**  
+  - IoT sensor data  
+  - Business and log data  
+  - Financial market data  
+
+---
+
+## ⚠️ Challenges & Considerations  
+- **Not suitable for long-running processes** – Traditional servers may be simpler and cheaper.  
+- **Vendor lock-in risk** – Serverless often depends heavily on platform-specific features (auth, monitoring, scaling).  
+- **Cold start latency** – Scaling from zero can add delays, unsuitable for low-latency applications (e.g., financial trading).  
+
+---
+
+## 🎯 Summary  
+Serverless computing allows developers to build applications faster by focusing on code, not infrastructure. It provides **automatic scaling, pay-per-use pricing, and simplified management**, making it ideal for event-driven, short-lived workloads. However, considerations around **latency, long-running tasks, and vendor lock-in** must be evaluated before adoption.  
 
 
 
